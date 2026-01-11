@@ -1,0 +1,7 @@
+.idea
+.vscode
+
+build-*
+cmake-build-**
+
+[Bb][Uu][Ii][Ll][Dd]
