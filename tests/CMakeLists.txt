@@ -5,7 +5,22 @@ add_custom_target(copy_assets
         COMMENT "Copying assets to build and runtime directories"
 )
 
-# 构建时触发资源文件复制
-add_executable(hello_world hello_world.cpp)
-target_link_libraries(hello_world PUBLIC study_cpp_design_pattern)
-add_dependencies(hello_world copy_assets)
+# Collect all cpp files in this directory
+file(GLOB TEST_SOURCES CONFIGURE_DEPENDS "*.cpp")
+
+foreach (test_src ${TEST_SOURCES})
+    # Extract file name without extension
+    get_filename_component(test_name ${test_src} NAME_WE)
+    # Create executable
+    add_executable(${test_name} ${test_src})
+    # Link main library
+    target_link_libraries(${test_name}
+            PRIVATE ${PROJECT_NAME}
+    )
+    # 构建时触发资源文件复制
+    add_dependencies(${test_name} copy_assets)
+    # Register with CTest
+    add_test(NAME ${test_name}
+            COMMAND ${test_name}
+    )
+endforeach ()
