@@ -45,10 +45,13 @@ set(lib_directory ${CMAKE_SOURCE_DIR}/lib)
 
 # 源文件
 file(GLOB_RECURSE SRCS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
-file(GLOB_RECURSE HDRS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.h" "${CMAKE_CURRENT_SOURCE_DIR}/src/*.hpp")
+file(GLOB_RECURSE HDRS "${CMAKE_CURRENT_SOURCE_DIR}/include/*.h" "${CMAKE_CURRENT_SOURCE_DIR}/include/*.hpp")
 
 # 添加头文件的目的仅仅是为了让IDEA识别到 新建文件的时候添加索引
 add_library(${PROJECT_NAME} ${SRCS} ${HDRS})
+target_include_directories(${PROJECT_NAME}
+        PUBLIC ${PROJECT_SOURCE_DIR}/include
+)
 
 include(CTest)
 enable_testing()
