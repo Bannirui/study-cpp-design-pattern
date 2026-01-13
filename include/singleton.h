@@ -4,6 +4,7 @@
 
 #pragma once
 
+#include <string>
 #include <mutex>
 
 class Singleton {
@@ -18,4 +19,5 @@ private:
 private:
     static Singleton *m_instance;
     static std::mutex m_mutex;
+    static std::string DEFAULT_KEY;
 };
