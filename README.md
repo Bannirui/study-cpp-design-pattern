@@ -11,3 +11,5 @@ GoF DESIGN PATTERNS
     - [IoC container](./include/ioc.h)
 - abstract factory
     - [abstract factory](./include/abstract_factory.h)
+- builder
+    - [builder](./include/builder.h) 
