@@ -4,8 +4,7 @@
 
 #pragma once
 
-#include <iostream>
-
+// interface
 class ExportApi {
 public:
     virtual bool exportData() =0;
@@ -16,26 +15,17 @@ protected:
 
 class ExportTxt : public ExportApi {
 public:
-    bool exportData() override {
-        std::cout << "ExportTxt" << std::endl;
-        return true;
-    }
+    bool exportData() override;
 };
 
 class ExportDB : public ExportApi {
 public:
-    bool exportData() override {
-        std::cout << "ExportDB" << std::endl;
-        return true;
-    }
+    bool exportData() override;
 };
 
 class ExportOperate {
 public:
-    bool exportData() {
-        this->factoryMethod()->exportData();
-        return true;
-    }
+    bool exportData();
 
 protected:
     ExportOperate() = default;
@@ -45,14 +35,10 @@ protected:
 
 class ExportTxtOperate : public ExportOperate {
 protected:
-    ExportApi *factoryMethod() override {
-        return new ExportTxt();
-    }
+    ExportApi *factoryMethod() override;
 };
 
 class ExportDBOperate : public ExportOperate {
 protected:
-    ExportApi *factoryMethod() override {
-        return new ExportDB();
-    }
+    ExportApi *factoryMethod() override;
 };
