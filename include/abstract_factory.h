@@ -4,8 +4,7 @@
 
 #pragma once
 
-#include <iostream>
-
+// interface
 class FrameApi {
 public:
     virtual void Draw() =0;
@@ -14,6 +13,27 @@ protected:
     FrameApi() = default;
 };
 
+class ComputerFrame : public FrameApi {
+public:
+    ComputerFrame(int pins);
+
+    void Draw() override;
+
+private:
+    int m_pins;
+};
+
+class MobileFrame : public FrameApi {
+public:
+    MobileFrame(int pins);
+
+    void Draw() override;
+
+private:
+    int m_pins;
+};
+
+// interface
 class LayoutApi {
 public:
     virtual void InstallFrame() =0;
@@ -22,40 +42,12 @@ protected:
     LayoutApi() = default;
 };
 
-class ComputerFrame : public FrameApi {
-public:
-    ComputerFrame(int pins) : m_pins(pins) {
-    }
-
-    void Draw() override {
-        std::cout << "Computer: " << m_pins << std::endl;
-    }
-
-private:
-    int m_pins;
-};
-
-class MobileFrame : public FrameApi {
-public:
-    MobileFrame(int pins) : m_pins(pins) {
-    }
-
-    void Draw() override {
-        std::cout << "Mobile: " << m_pins << std::endl;
-    }
-
-private:
-    int m_pins;
-};
 
 class HighLayout : public LayoutApi {
 public:
-    HighLayout(int pins) : m_frameAdapterPins(pins) {
-    }
+    HighLayout(int pins);
 
-    void InstallFrame() override {
-        std::cout << "High Layout: " << m_frameAdapterPins << std::endl;
-    }
+    void InstallFrame() override;
 
 private:
     int m_frameAdapterPins;
@@ -63,17 +55,15 @@ private:
 
 class LowLayout : public LayoutApi {
 public:
-    LowLayout(int pins) : m_frameAdapterPins(pins) {
-    }
+    LowLayout(int pins);
 
-    void InstallFrame() override {
-        std::cout << "Low Layout: " << m_frameAdapterPins << std::endl;
-    }
+    void InstallFrame() override;
 
 private:
     int m_frameAdapterPins;
 };
 
+// combine multiple products
 class AbstractFactory {
 public:
     virtual FrameApi *CreateFrame() = 0;
@@ -84,40 +74,24 @@ protected:
     AbstractFactory() = default;
 };
 
+// the product schema
 class Schema1 : public AbstractFactory {
 public:
-    FrameApi *CreateFrame() override {
-        return new ComputerFrame(1024);
-    }
+    FrameApi *CreateFrame() override;
 
-    LayoutApi *CreateLayout() override {
-        return new HighLayout(1024);
-    }
+    LayoutApi *CreateLayout() override;
 };
 
 class Schema2 : public AbstractFactory {
 public:
-    FrameApi *CreateFrame() override {
-        return new MobileFrame(400);
-    }
+    FrameApi *CreateFrame();
 
-    LayoutApi *CreateLayout() override {
-        return new LowLayout(400);
-    }
+    LayoutApi *CreateLayout();
 };
 
 class GuiEngine {
 public:
-    void PrepareMaterial(AbstractFactory *p_schema) {
-        this->m_pFrame = p_schema->CreateFrame();
-        if (this->m_pFrame) {
-            this->m_pFrame->Draw();
-        }
-        this->m_pLayout = p_schema->CreateLayout();
-        if (this->m_pLayout) {
-            this->m_pLayout->InstallFrame();
-        }
-    }
+    void PrepareMaterial(AbstractFactory *p_schema);
 
 private:
     FrameApi *m_pFrame;
