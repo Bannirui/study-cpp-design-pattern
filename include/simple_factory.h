@@ -4,11 +4,7 @@
 
 #pragma once
 
-#include <string>
-#include <iostream>
-
-#include "dyn_obj.h"
-
+// interface
 class Api {
 public:
     virtual void test() =0;
@@ -19,27 +15,16 @@ protected:
 
 class ImplOne : public Api {
 public:
-    void test() override {
-        std::cout << "ImplOne executing" << std::endl;
-    }
+    void test() override;
 };
 
 class ImplTwo : public Api {
 public:
-    void test() override {
-        std::cout << "ImplTwo executing" << std::endl;
-    }
+    void test() override;
 };
 
-REG_CLASS(ImplOne)
-REG_CLASS(ImplTwo)
 
 class Factory {
 public:
-    static Api *createApi() {
-        std::string name = "ImplTwo";
-        Api *p = nullptr;
-        p = static_cast<Api *>(CObjectFactory::createObject(name));
-        return p;
-    }
+    static Api *createApi();
 };
