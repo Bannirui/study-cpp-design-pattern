@@ -4,6 +4,7 @@
 
 #include "builder.h"
 
+#include <functional>
 #include <iostream>
 #include <utility>
 
@@ -19,41 +20,55 @@ ExportFooterModel::ExportFooterModel(std::string user)
     : m_user(std::move(user)) {
 }
 
-void ExportToTxtHelper::doExport(ExportHeaderModel &header, std::vector<ExportDataModel *> &dataColl,
-                                 ExportFooterModel &footer) {
-    std::string str = "";
-    // header
-    str += header.get_dep_id() + "," + header.get_export_date() + "\n";
-    // data
-    for (auto &x: dataColl) {
-        str += x->get_trans_id() + ":" + ConvertToStr(x->get_quantity()) + "\n";
-    }
-    // footer
-    str += footer.get_user() + "\n";
-    std::cout << str;
+Builder::Builder() {
+    this->m_ret = "";
 }
 
-void ExportToXmlHelper::doExport(ExportHeaderModel &header, std::vector<ExportDataModel *> &dataColl,
-                                 ExportFooterModel &footer) {
-    std::string str = "";
-    // header
-    str.append("<?xml version='1.0' encoding='utf-8'>\n");
-    str.append("<Receipt>\n");
-    str.append("    <Header>\n");
-    str.append("        <DepId>");
-    str.append(header.get_dep_id() + "</DepId>\n");
-    str.append("        <ExportDate>" + header.get_export_date() + "</ExportDate>\n");
-    str.append("    </Header>\n");
-    // data
-    str.append("    <Body>\n");
-    for (auto &x: dataColl) {
-        str.append("        <id>" + x->get_trans_id() + "</id>\n");
-        str.append("        <quantity>" + ConvertToStr(x->get_quantity()) + "</quantity>\n");
+void TxtBuilder::buildHeader(ExportHeaderModel &header) {
+    this->m_ret.append(header.get_dep_id() + "," + header.get_export_date() + "\n");
+}
+
+void TxtBuilder::buildBody(std::vector<ExportDataModel *> &datas) {
+    for (auto &x: datas) {
+        this->m_ret.append(x->get_trans_id() + ":" + ConvertToStr(x->get_quantity()) + "\n");
     }
-    str.append("    </Body>\n");
-    // footer
-    str.append("    <Footer>\n");
-    str.append("        <ExportUser>" + footer.get_user() + "</ExportUser>\n");
-    str.append("    </Footer>\n");
-    std::cout << str;
+}
+
+void TxtBuilder::buildFooter(ExportFooterModel &footer) {
+    this->m_ret.append(footer.get_user() + "\n");
+}
+
+void XmlBuilder::buildHeader(ExportHeaderModel &header) {
+    m_ret.append("<?xml version='1.0' encoding='utf-8'>\n");
+    m_ret.append("<Receipt>\n");
+    m_ret.append("    <Header>\n");
+    m_ret.append("        <DepId>");
+    m_ret.append(header.get_dep_id() + "</DepId>\n");
+    m_ret.append("        <ExportDate>" + header.get_export_date() + "</ExportDate>\n");
+    m_ret.append("    </Header>\n");
+}
+
+void XmlBuilder::buildBody(std::vector<ExportDataModel *> &datas) {
+    m_ret.append("    <Body>\n");
+    for (auto &x: datas) {
+        m_ret.append("        <id>" + x->get_trans_id() + "</id>\n");
+        m_ret.append("        <quantity>" + ConvertToStr(x->get_quantity()) + "</quantity>\n");
+    }
+    m_ret.append("    </Body>\n");
+}
+
+void XmlBuilder::buildFooter(ExportFooterModel &footer) {
+    m_ret.append("    <Footer>\n");
+    m_ret.append("        <ExportUser>" + footer.get_user() + "</ExportUser>\n");
+    m_ret.append("    </Footer>\n");
+}
+
+Director::Director(Builder &builder) : m_builder(builder) {
+}
+
+void Director::construct(ExportHeaderModel &header, std::vector<ExportDataModel *> &datas,
+                         ExportFooterModel &footer) {
+    m_builder.buildHeader(header);
+    m_builder.buildBody(datas);
+    m_builder.buildFooter(footer);
 }

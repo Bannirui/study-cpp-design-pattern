@@ -14,12 +14,19 @@ int main() {
     std::vector<ExportDataModel *> data_vec;
     data_vec.push_back(data1);
     data_vec.push_back(data2);
-    ExportToTxtHelper txt;
-    txt.doExport(header, data_vec, footer);
 
-    std::cout<<std::endl;
+    {
+        TxtBuilder txtBuilder;
+        Director director(txtBuilder);
+        director.construct(header, data_vec, footer);
+        std::cout << txtBuilder.get_ret() << std::endl;
+    }
+    {
+        XmlBuilder xmlBuilder;
+        Director director(xmlBuilder);
+        director.construct(header, data_vec, footer);
+        std::cout << xmlBuilder.get_ret() << std::endl;
+    }
 
-    ExportToXmlHelper xml;
-    xml.doExport(header, data_vec, footer);
     return 0;
 }

@@ -54,19 +54,58 @@ private:
     std::string m_user;
 };
 
-class ExportToTxtHelper {
-public:
-    void doExport(ExportHeaderModel &header, std::vector<ExportDataModel *> &dataColl, ExportFooterModel &footer);
-};
-
-class ExportToXmlHelper {
-public:
-    void doExport(ExportHeaderModel &header, std::vector<ExportDataModel *> &dataColl, ExportFooterModel &footer);
-};
-
 template<class T>
 std::string ConvertToStr(const T &v) {
     std::stringstream ss;
     ss << v;
     return ss.str();
 }
+
+// interface
+class Builder {
+public:
+    virtual void buildHeader(ExportHeaderModel &header) =0;
+
+    virtual void buildBody(std::vector<ExportDataModel *> &datas) =0;
+
+    virtual void buildFooter(ExportFooterModel &footer) =0;
+
+    std::string get_ret() const { return this->m_ret; };
+
+protected:
+    Builder();
+
+    std::string m_ret;
+};
+
+class TxtBuilder : public Builder {
+public:
+    TxtBuilder() = default;
+
+    void buildHeader(ExportHeaderModel &header) override;
+
+    void buildBody(std::vector<ExportDataModel *> &datas) override;
+
+    void buildFooter(ExportFooterModel &footer) override;
+};
+
+class XmlBuilder : public Builder {
+public:
+    XmlBuilder() = default;
+
+    void buildHeader(ExportHeaderModel &header) override;
+
+    void buildBody(std::vector<ExportDataModel *> &datas) override;
+
+    void buildFooter(ExportFooterModel &footer) override;
+};
+
+class Director {
+public:
+    Director(Builder &builder);
+
+    void construct(ExportHeaderModel &header, std::vector<ExportDataModel *> &datas, ExportFooterModel &footer);
+
+private:
+    Builder &m_builder;
+};
