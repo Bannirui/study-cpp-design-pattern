@@ -28,5 +28,7 @@ int main() {
         std::cout << xmlBuilder.get_ret() << std::endl;
     }
 
+    delete data1;
+    delete data2;
     return 0;
 }

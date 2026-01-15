@@ -61,6 +61,7 @@ void XmlBuilder::buildFooter(ExportFooterModel &footer) {
     m_ret.append("    <Footer>\n");
     m_ret.append("        <ExportUser>" + footer.get_user() + "</ExportUser>\n");
     m_ret.append("    </Footer>\n");
+    m_ret.append("</Receipt>\n");
 }
 
 Director::Director(Builder &builder) : m_builder(builder) {
