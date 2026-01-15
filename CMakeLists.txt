@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 4.1)
+cmake_minimum_required(VERSION 3.21)
 option(USE_PROXY "Enable proxy for FetchContent for file download" ON)
 if (USE_PROXY)
     message(STATUS "Proxy is enabled")
@@ -7,6 +7,9 @@ if (USE_PROXY)
     set(CMAKE_TLS_VERIFY OFF)
     set(CMAKE_DOWNLOAD_AGENT "curl")
 endif ()
+
+# 输出详细日志
+set(CMAKE_VERBOSE_MAKEFILE ON)
 
 # 项目信息
 project(study_cpp_design_pattern VERSION 1.0 LANGUAGES C CXX)
