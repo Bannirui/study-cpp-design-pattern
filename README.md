@@ -4,14 +4,13 @@ GoF DESIGN PATTERNS
 - simple factory
   - [simple factory](./include/simple_factory.h)
   - [dynamic object](./include/dyn_obj.h)
-- singleton: lazy mode and double check
-  - [singleton](./include/singleton.h)
+- [singleton: lazy mode and double check](./include/singleton.h)
 - factory: IoC and DI
   - [factory](./include/factory.h)
   - [IoC container](./include/ioc.h)
-- abstract factory
-  - [abstract factory](./include/abstract_factory.h)
-- builder
-  - [builder](./include/builder.h) 
-- prototype: create object via clone
-  - [prototype](./include/prototype.h)
+- [abstract factory](./include/abstract_factory.h)
+- [builder](./include/builder.h)
+- [prototype: create object via clone](./include/prototype.h)
+- [adapter](include/adapter.h)
+  - adapter for class
+  - adapter for object
