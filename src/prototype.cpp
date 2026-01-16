@@ -35,6 +35,14 @@ void HomeOrder::set_product_id(std::string customer_id) {
     this->m_product_id = customer_id;
 }
 
+OrderApi *HomeOrder::cloneOrder() {
+    HomeOrder *p = new HomeOrder();
+    p->set_customer_name(this->m_customer_name);
+    p->set_product_id(this->m_product_id);
+    p->set_order_num(this->m_order_cnt);
+    return p;
+}
+
 int AboardOrder::get_order_num() const {
     return this->m_order_cnt;
 }
@@ -64,25 +72,19 @@ void AboardOrder::set_product_id(std::string customer_id) {
     this->m_product_id = customer_id;
 }
 
+OrderApi *AboardOrder::cloneOrder() {
+    HomeOrder *p = new HomeOrder();
+    p->set_customer_name(this->m_customer_name);
+    p->set_product_id(this->m_product_id);
+    p->set_order_num(this->m_order_cnt);
+    return p;
+}
+
 void OrderBiz::saveOrder(OrderApi *pOrder) {
     while (pOrder->get_order_num() > 200) {
-        OrderApi *pNewOrder = nullptr;
-        if (dynamic_cast<HomeOrder *>(pOrder) != nullptr) {
-            HomeOrder *p2 = new HomeOrder();
-            HomeOrder *p1 = static_cast<HomeOrder *>(pOrder);
-            p2->set_order_num(200);
-            p2->set_customer_name(p1->get_customer_name());
-            p2->set_product_id(p1->get_product_id());
-            pNewOrder = p2;
-        }
-        if (dynamic_cast<AboardOrder *>(pOrder) != nullptr) {
-            AboardOrder *p2 = new AboardOrder();
-            AboardOrder *p1 = static_cast<AboardOrder *>(pOrder);
-            p2->set_order_num(200);
-            p2->set_customer_name(p1->get_customer_name());
-            p2->set_product_id(p1->get_product_id());
-            pNewOrder = p2;
-        }
+        OrderApi *pNewOrder = pOrder->cloneOrder();
+        pNewOrder->set_order_num(200);
+
         pOrder->set_order_num(pOrder->get_order_num() - 200);
         std::cout << "new order is:" << pNewOrder->get_order_content() << std::endl;
     }

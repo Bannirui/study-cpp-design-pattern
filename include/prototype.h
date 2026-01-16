@@ -14,6 +14,8 @@ public:
 
     virtual std::string get_order_content() const = 0;
 
+    virtual OrderApi *cloneOrder() = 0;
+
 protected:
     OrderApi() = default;
 };
@@ -33,6 +35,8 @@ public:
     std::string get_product_id() const;
 
     void set_product_id(std::string customer_id);
+
+    OrderApi *cloneOrder() override;
 
 private:
     std::string m_customer_name;
@@ -55,6 +59,8 @@ public:
     std::string get_product_id() const;
 
     void set_product_id(std::string customer_id);
+
+    OrderApi *cloneOrder() override;
 
 private:
     std::string m_customer_name;

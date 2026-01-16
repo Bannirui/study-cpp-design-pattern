@@ -13,5 +13,5 @@ GoF DESIGN PATTERNS
   - [abstract factory](./include/abstract_factory.h)
 - builder
   - [builder](./include/builder.h) 
-- prototype
+- prototype: create object via clone
   - [prototype](./include/prototype.h)
