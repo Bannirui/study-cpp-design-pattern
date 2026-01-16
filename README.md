@@ -14,3 +14,4 @@ GoF DESIGN PATTERNS
 - [adapter](include/adapter.h)
   - adapter for class
   - adapter for object
+- [facade](./include/facade.h)
