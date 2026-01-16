@@ -19,21 +19,20 @@ struct PiecePos {
 
 class Piece {
 public:
-    Piece(PieceColor color, PiecePos pos);
+    Piece(PieceColor color);
 
-    virtual ~Piece() =0;
+    virtual ~Piece() = default;
 
     virtual void draw() {
     };
 
 protected:
     PieceColor m_color;
-    PiecePos m_pos;
 };
 
 class BlackPiece : public Piece {
 public:
-    BlackPiece(PieceColor color, PiecePos pos);
+    BlackPiece(PieceColor color);
 
     ~BlackPiece() override = default;
 
@@ -42,7 +41,7 @@ public:
 
 class WhitePiece : public Piece {
 public:
-    WhitePiece(PieceColor color, PiecePos pos);
+    WhitePiece(PieceColor color);
 
     ~WhitePiece() override = default;
 
@@ -60,7 +59,9 @@ public:
     void SetPiece(PieceColor color, PiecePos pos);
 
 private:
-    std::vector<Piece *> m_pieces;
+    std::vector<PiecePos> m_pieces;
     std::string m_blackName;
     std::string m_whiteName;
+    BlackPiece *m_pBlack;
+    WhitePiece *m_pWhite;
 };

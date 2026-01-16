@@ -6,20 +6,20 @@
 
 #include <iostream>
 
-Piece::Piece(PieceColor color, PiecePos pos)
-    : m_color(color), m_pos(pos) {
+Piece::Piece(PieceColor color)
+    : m_color(color) {
 }
 
-BlackPiece::BlackPiece(PieceColor color, PiecePos pos)
-    : Piece(color, pos) {
+BlackPiece::BlackPiece(PieceColor color)
+    : Piece(color) {
 }
 
 void BlackPiece::draw() {
     std::cout << "BlackPiece::draw()" << std::endl;
 }
 
-WhitePiece::WhitePiece(PieceColor color, PiecePos pos)
-    : Piece(color, pos) {
+WhitePiece::WhitePiece(PieceColor color)
+    : Piece(color) {
 }
 
 void WhitePiece::draw() {
@@ -27,7 +27,7 @@ void WhitePiece::draw() {
 }
 
 PieceBoard::PieceBoard(std::string black, std::string white)
-    : m_blackName(black), m_whiteName(white) {
+    : m_blackName(black), m_whiteName(white), m_pBlack(nullptr), m_pWhite(nullptr) {
 }
 
 PieceBoard::~PieceBoard() {
@@ -35,18 +35,26 @@ PieceBoard::~PieceBoard() {
 }
 
 void PieceBoard::Clear() {
-    for (auto it = this->m_pieces.begin(); it != this->m_pieces.end(); ++it) {
-        delete *it;
+    if (!this->m_pBlack) {
+        delete this->m_pBlack;
+    }
+    if (!this->m_pWhite) {
+        delete this->m_pWhite;
     }
 }
 
 void PieceBoard::SetPiece(PieceColor color, PiecePos pos) {
-    Piece *p = nullptr;
     if (color == PieceColor::BLACK) {
-        p = new BlackPiece(color, pos);
+        if (!this->m_pBlack) {
+            this->m_pBlack = new BlackPiece(color);
+        }
+        this->m_pBlack->draw();
     } else {
-        p = new WhitePiece(color, pos);
+        if (!this->m_pWhite) {
+            this->m_pWhite = new WhitePiece(color);
+        }
+        this->m_pWhite->draw();
     }
     std::cout << "cur is " << color << " at " << pos.m_x << " ," << pos.m_y << std::endl;
-    this->m_pieces.push_back(p);
+    this->m_pieces.push_back(pos);
 }

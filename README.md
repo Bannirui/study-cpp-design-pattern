@@ -15,3 +15,4 @@ GoF DESIGN PATTERNS
   - adapter for class
   - adapter for object
 - [facade](./include/facade.h)
+- [flyweight: for resources pool and cache](./include/fly_weight.h)
