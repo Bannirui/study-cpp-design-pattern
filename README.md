@@ -21,3 +21,6 @@ GoF DESIGN PATTERNS
   - [AOP](./include/aop.h)
   - [auto pointer](include/auto_ptr.hpp)
 - [decorator: enhance features via super class object](./include/decorator.h)
+- [composite: tree structure](./include/composite.h)
+  - binary tree
+  - file system
