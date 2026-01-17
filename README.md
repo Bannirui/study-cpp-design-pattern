@@ -19,3 +19,4 @@ GoF DESIGN PATTERNS
 - proxy
   - [proxy](./include/proxy.h)
   - [AOP](./include/aop.h)
+  - [auto pointer](include/auto_ptr.hpp)
