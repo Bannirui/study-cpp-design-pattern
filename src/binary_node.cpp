@@ -6,28 +6,28 @@
 
 #include "express.h"
 
-BinaryNode::BinaryNode(char opend, const Express left, const Express right)
-    : m_opend(opend), m_left(left), m_right(right) {
+BinaryNode::BinaryNode(char operate, const Express num1, const Express num2)
+    : m_operate(operate), m_left(num1), m_right(num2) {
 }
 
 void BinaryNode::print(std::ostream &os) const {
-    os << "(" << this->m_left << this->m_opend << this->m_right << ")";
+    os << "(" << this->m_left << this->m_operate << this->m_right << ")";
 }
 
 int BinaryNode::eval() {
-    int ret1 = this->m_left.eval();
-    int ret2 = this->m_right.eval();
-    if (this->m_opend == '+') {
-        return ret1 + ret2;
+    int num1 = this->m_left.eval();
+    int num2 = this->m_right.eval();
+    if (this->m_operate == '+') {
+        return num1 + num2;
     }
-    if (this->m_opend == '-') {
-        return ret1 - ret2;
+    if (this->m_operate == '-') {
+        return num1 - num2;
     }
-    if (this->m_opend == '*') {
-        return ret1 * ret2;
+    if (this->m_operate == '*') {
+        return num1 * num2;
     }
-    if (this->m_opend == '/' && ret2 != 0) {
-        return ret1 / ret2;
+    if (this->m_operate == '/' && num2 != 0) {
+        return num1 / num2;
     }
     throw "error, cal";
 };

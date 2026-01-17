@@ -4,17 +4,17 @@
 
 #include "unary_node.h"
 
-UnaryNode::UnaryNode(char opend, const Express left)
-    : m_opend(opend), m_left(left) {
+UnaryNode::UnaryNode(char sign, const Express num)
+    : m_sign(sign), m_num(num) {
 }
 
 void UnaryNode::print(std::ostream &os) const {
-    os << "(" << this->m_opend << this->m_left << ")";
+    os << "(" << this->m_sign << this->m_num << ")";
 }
 
 int UnaryNode::eval() {
-    if (this->m_opend == '-') {
-        return (-1) * this->m_left.eval();
+    if (this->m_sign == '-') {
+        return (-1) * this->m_num.eval();
     }
     throw "error, op";
 }

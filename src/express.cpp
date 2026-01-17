@@ -12,12 +12,12 @@ Express::Express(int val) {
     this->p = new ValueNode(val);
 }
 
-Express::Express(char op, const Express express) {
-    this->p = new UnaryNode(op, express);
+Express::Express(char operate, const Express num) {
+    this->p = new UnaryNode(operate, num);
 };
 
-Express::Express(char op, const Express express1, const Express express2) {
-    this->p = new BinaryNode(op, express1, express2);
+Express::Express(char operate, const Express num1, const Express num2) {
+    this->p = new BinaryNode(operate, num1, num2);
 };
 
 Express::Express(const Express &other) {

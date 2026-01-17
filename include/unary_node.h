@@ -11,7 +11,12 @@ class UnaryNode : public ExpressNode {
 public:
     friend class Express;
 
-    UnaryNode(char opend, const Express left);
+    /**
+     * represent a signed num, like -5
+     * @param sign + -
+     * @param num
+     */
+    UnaryNode(char sign, const Express num);
 
     ~UnaryNode() override = default;
 
@@ -21,6 +26,7 @@ private:
     int eval() override;
 
 private:
-    char m_opend;
-    class Express m_left;
+    // represent a sign num, like -5
+    char m_sign;
+    class Express m_num;
 };

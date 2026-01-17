@@ -10,11 +10,25 @@ class ExpressNode;
 
 class Express {
 public:
+    /**
+     * represent a unsigned num, like 4
+     */
     Express(int val);
 
-    Express(char op, const Express express);
+    /**
+     * represent a signed num, like -5
+     * @param operate + - * /
+     * @param num
+     */
+    Express(char operate, const Express num);
 
-    Express(char op, const Express express1, const Express express2);
+    /**
+     * num1 + num2
+     * @param operate +, -, *, /
+     * @param num1
+     * @param num2
+     */
+    Express(char operate, const Express num1, const Express num2);
 
     Express(const Express &other);
 

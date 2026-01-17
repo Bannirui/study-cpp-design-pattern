@@ -13,7 +13,16 @@ class BinaryNode : public ExpressNode {
 public:
     friend class Express;
 
-    BinaryNode(char opend, const Express left, const Express right);
+    /**
+     *          +
+     *        /   \
+     *       a     b
+     * a+b
+     * @param opend operator, +, -, *, /
+     * @param num1 the left
+     * @param num2 the right
+     */
+    BinaryNode(char operate, const Express num1, const Express num2);
 
     ~BinaryNode() = default;
 
@@ -23,7 +32,17 @@ private:
     int eval() override;
 
 private:
-    char m_opend;
+    /**
+     *
+     *          +
+     *        /   \
+     *       a     b
+     * a+b
+     */
+    // operator, +, -, *, /
+    char m_operate;
+    // the binary tree, left child
     class Express m_left;
+    // the binary tree, right child
     class Express m_right;
 };
