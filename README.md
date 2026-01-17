@@ -16,4 +16,6 @@ GoF DESIGN PATTERNS
   - adapter for object
 - [facade](./include/facade.h)
 - [flyweight: for resources pool and cache](./include/fly_weight.h)
-- [proxy](./include/proxy.h)
+- proxy
+  - [proxy](./include/proxy.h)
+  - [AOP](./include/aop.h)
