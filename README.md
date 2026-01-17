@@ -20,3 +20,4 @@ GoF DESIGN PATTERNS
   - [proxy](./include/proxy.h)
   - [AOP](./include/aop.h)
   - [auto pointer](include/auto_ptr.hpp)
+- [decorator: enhance features via super class object](./include/decorator.h)
