@@ -24,3 +24,9 @@ GoF DESIGN PATTERNS
 - [composite: tree structure](./include/composite.h)
   - binary tree
   - file system
+  - suffix calculate
+    - [express](./include/express.h)
+    - [express node](./include/express_node.h)
+    - [value node](./include/value_node.h)
+    - [binary node](./include/binary_node.h)
+    - [unary node](./include/unary_node.h)
