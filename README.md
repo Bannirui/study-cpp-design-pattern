@@ -1,27 +1,27 @@
 GoF DESIGN PATTERNS
 ---
 
-- simple factory
+- 1 simple factory
   - [simple factory](./include/simple_factory.h)
   - [dynamic object](./include/dyn_obj.h)
-- [singleton: lazy mode and double check](./include/singleton.h)
-- factory: IoC and DI
+- 2 [singleton: lazy mode and double check](./include/singleton.h)
+- 3 factory: IoC and DI
   - [factory](./include/factory.h)
   - [IoC container](./include/ioc.h)
-- [abstract factory](./include/abstract_factory.h)
-- [builder](./include/builder.h)
-- [prototype: create object via clone](./include/prototype.h)
-- [adapter](include/adapter.h)
+- 4 [abstract factory](./include/abstract_factory.h)
+- 5 [builder](./include/builder.h)
+- 6 [prototype: create object via clone](./include/prototype.h)
+- 7 [adapter](include/adapter.h)
   - adapter for class
   - adapter for object
-- [facade](./include/facade.h)
-- [flyweight: for resources pool and cache](./include/fly_weight.h)
-- proxy
+- 8 [facade](./include/facade.h)
+- 9 [flyweight: for resources pool and cache](./include/fly_weight.h)
+- 10 proxy
   - [proxy](./include/proxy.h)
   - [AOP](./include/aop.h)
   - [auto pointer](include/auto_ptr.hpp)
-- [decorator: enhance features via super class object](./include/decorator.h)
-- [composite: tree structure](./include/composite.h)
+- 11 [decorator: enhance features via super class object](./include/decorator.h)
+- 12 [composite: tree structure](./include/composite.h)
   - binary tree
   - file system
   - suffix calculate
@@ -30,4 +30,5 @@ GoF DESIGN PATTERNS
     - [value node](./include/value_node.h)
     - [binary node](./include/binary_node.h)
     - [unary node](./include/unary_node.h)
-- [bridge](./include/bridge.h)
+- 13 [bridge](./include/bridge.h)
+- 14 [template method](./include/template_method.h)
