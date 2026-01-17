@@ -30,3 +30,4 @@ GoF DESIGN PATTERNS
     - [value node](./include/value_node.h)
     - [binary node](./include/binary_node.h)
     - [unary node](./include/unary_node.h)
+- [bridge](./include/bridge.h)
