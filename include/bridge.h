@@ -6,15 +6,18 @@
 
 #include <iostream>
 
+// operating system interface
 class IOS {
 public:
+    virtual void Run() =0;
+
+protected:
     IOS() = default;
 
     virtual ~IOS() = default;
-
-    virtual void Run() =0;
 };
 
+// windows system
 class CWindows : public IOS {
 public:
     ~CWindows() override = default;
@@ -24,6 +27,7 @@ public:
     };
 };
 
+// linux system
 class CLinux : public IOS {
 public:
     ~CLinux() override = default;
@@ -33,6 +37,7 @@ public:
     };
 };
 
+// computer interface
 class IComputer {
 public:
     virtual void Install(IOS *pOs) =0;
