@@ -34,3 +34,4 @@ GoF DESIGN PATTERNS
 - 14 [template method](./include/template_method.h)
 - 15 [strategy](./include/strategy.h)
 - 16 [observer](./include/observer.h)
+- 17 [command](./include/command.h)
