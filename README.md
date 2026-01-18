@@ -38,3 +38,4 @@ GoF DESIGN PATTERNS
 - 18 [chain of responsibility](./include/chain_of_responsibility.h)
 - 19 [memento](./include/memento.h)
 - 20 [mediator](./include/mediator.h)
+- 21 [state](./include/state.h)
