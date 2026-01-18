@@ -33,3 +33,4 @@ GoF DESIGN PATTERNS
 - 13 [bridge](./include/bridge.h)
 - 14 [template method](./include/template_method.h)
 - 15 [strategy](./include/strategy.h)
+- 16 [observer](./include/observer.h)
