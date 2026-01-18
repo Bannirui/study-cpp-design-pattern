@@ -32,3 +32,4 @@ GoF DESIGN PATTERNS
     - [unary node](./include/unary_node.h)
 - 13 [bridge](./include/bridge.h)
 - 14 [template method](./include/template_method.h)
+- 15 [strategy](./include/strategy.h)
