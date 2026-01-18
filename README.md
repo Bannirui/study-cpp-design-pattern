@@ -35,3 +35,4 @@ GoF DESIGN PATTERNS
 - 15 [strategy](./include/strategy.h)
 - 16 [observer](./include/observer.h)
 - 17 [command](./include/command.h)
+- 18 [chain of responsibility](./include/chain_of_responsibility.h)
