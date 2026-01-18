@@ -37,3 +37,4 @@ GoF DESIGN PATTERNS
 - 17 [command](./include/command.h)
 - 18 [chain of responsibility](./include/chain_of_responsibility.h)
 - 19 [memento](./include/memento.h)
+- 20 [mediator](./include/mediator.h)
