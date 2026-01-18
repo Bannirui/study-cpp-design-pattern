@@ -36,3 +36,4 @@ GoF DESIGN PATTERNS
 - 16 [observer](./include/observer.h)
 - 17 [command](./include/command.h)
 - 18 [chain of responsibility](./include/chain_of_responsibility.h)
+- 19 [memento](./include/memento.h)
