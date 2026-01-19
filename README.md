@@ -41,3 +41,4 @@ GoF DESIGN PATTERNS
 - 21 [state](./include/state.h)
 - 22 [interpreter](./include/interpreter.h)
 - 23 [visitor](./include/visitor.h)
+- 24 [iterator](./tests/iterator_test.cpp)
