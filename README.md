@@ -39,3 +39,4 @@ GoF DESIGN PATTERNS
 - 19 [memento](./include/memento.h)
 - 20 [mediator](./include/mediator.h)
 - 21 [state](./include/state.h)
+- 22 [interpreter](./include/interpreter.h)
