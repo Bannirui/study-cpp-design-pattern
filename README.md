@@ -40,3 +40,4 @@ GoF DESIGN PATTERNS
 - 20 [mediator](./include/mediator.h)
 - 21 [state](./include/state.h)
 - 22 [interpreter](./include/interpreter.h)
+- 23 [visitor](./include/visitor.h)
